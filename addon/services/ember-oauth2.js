@@ -261,6 +261,10 @@ export default Ember.Service.extend(Ember.Evented, {
       encodeURIComponent(this.get('redirectUri')) +
       '&client_id=' +
       encodeURIComponent(this.get('clientId')) +
+      '&access_type=' +
+      encodeURIComponent(this.get('accessType')) +
+      '&prompt=' +
+      encodeURIComponent(this.get('prompt')) +
       '&state=' +
       encodeURIComponent(this.get('state'));
     if (this.get('scope')) {
@@ -281,6 +285,8 @@ export default Ember.Service.extend(Ember.Evented, {
     request.response_type = this.get('responseType');
     request.providerId = this.get('providerId');
     request.clientId = this.get('clientId');
+    request.access_type = this.get('accessType');
+    request.prompt = this.get('prompt');
     request.state = this.generateState();
     if (this.get('scope')) {
       request.scope = this.get('scope');
